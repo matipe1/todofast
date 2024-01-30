@@ -1,46 +1,45 @@
-from fastapi import APIRouter, HTTPException, status
-from models.task import Task
+from fastapi import APIRouter
 
-router = APIRouter(prefix='/tasks')
+
+task_router = APIRouter(prefix="/api/tasks", tags=["Tasks"])
+
+# DB example:
+task_list = [
+    {
+        "task_id": 1,
+        "title": "Do the bed",
+        "done": True
+    },
+    {
+        "task_id": 2,
+        "title": "Do the dishes",
+        "done": False
+    },
+    {
+        "task_id": 3,
+        "title": "Workout"
+    },
+]
+
+# Read
+@task_router.get('/')
+async def all_tasks():
+    return "Not Implemented"
 
 
 # Create
-@router.post('/', )
-async def add_task():
-    return
-
-# Read
-@router.get('/', response_model=list[Task])
-async def read_tasks():
-    return
-    # try:
-    #     return a task in database
-    # except:
-    #     raise HTTPException(...)
-
-
-
-# @router.get('/{task_id}', response_model=Task)
-# async def read_task(task_id):
-#     return
-#     try:
-#         return task in database
-#     except:
-#         raise HTTPException(...)
+@task_router.post('/')
+async def post_task():
+    return "Not Implemented"
 
 
 # Update a task
-@router.patch('/')
-async def update_task():
-    return
+@task_router.put('/{key}')
+async def update_task(key: int):
+    return "Not Implemented"
 
+ 
 # Delete a task
-@router.delete('/{task_id}')
-async def delete_task(task_id):
-    return
-    # try:
-    #     delete
-    #     return {"msg": "Task deleted successfully"}
-
-    # except:
-    #     raise HTTPException(...)
+@task_router.delete('/{key}')
+async def delete_task(key):
+    return "Not Implemented"
